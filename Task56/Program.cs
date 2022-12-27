@@ -10,52 +10,82 @@
 выдаёт номер строки с наименьшей 
 суммой элементов: 1 строка*/
 
-/*Задача 55: Задайте двумерный массив. 
-Напишите программу, которая заменяет 
-строки на столбцы. В случае, если это невозможно, 
-программа должна вывести сообщение для пользователя. */
 
-//1.функция получения массива
-//2.функция замены строки на столбцы
-//3.функция замены
-//4.функция печати массива
-
-
-void PrintArray(int[,] array) 
-{
-     for (int i = 0; i < array.GetLength(0); i++)
-      { 
-        for (int j = 0; j < array.GetLength(1); j++)
-         { 
-            Console.Write($"{array[i, j]} ");
-         }
-              Console.WriteLine(); 
-        }
-}
-int[,] GetArray(int m, int n)
-{
-    int[,] array = new int[m, n]; 
-    Random rnd = new Random(); 
-    for (int i = 0; i < m; i++)
-        {
-            for (int j = 0; j < n; j++)
-                {
-                    array[i, j] = rnd.Next(1, 10); 
-                } 
-        }
-        return array; 
+int GetNumber(string text)
+{ 
+    int result = 0; 
+    Console.WriteLine(text); 
+    while(true) 
+    { 
+    if (int.TryParse(Console.ReadLine(), out result)) 
+        { 
+        break; 
+        } 
+        else 
+        { 
+        Console.WriteLine("Ввели не число. Введите число: "); 
+        } 
+    } 
+return result; 
 } 
-void reverse(int[,] arr)
+
+int[,] GetArray(int m, int n) 
 {
-        int[,] arrayreverse = new int [arr.GetLength(1), arr.GetLength(0)];
-        for (int i = 0; i < arrayreverse.GetLength(0); i++)
-            {
-                for (int j = 0; j < arrayreverse.GetLength(1); j++)
-                        {
-                            arrayreverse[i, j] = arr[j, i]; 
-                        }
-            }
-        PrintArray(arrayreverse);
+  int[,] array = new int[m,n]; 
+  Random rnd = new Random(); 
+  for (int i = 0; i < m; i++) 
+    { 
+    for (int j = 0; j < n; j++) 
+        { 
+        array[i,j] = rnd.Next(0, 10); 
+        } 
+    } 
+return array; 
+} 
+
+void PrintArray (int[,] array)
+{
+  for (int i = 0; i < array.GetLength(0); i++)
+  {
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+      Console.Write($" {array[i,j]} ");
+    }
+    Console.WriteLine();
+  }
 }
-int[,] matrix = GetArray(2, 5); 
-PrintArray (matrix); reverse(matrix); 
+
+int SumLineElements(int[,] array, int i)
+{
+  int sumLine = array[i,0];
+  for (int j = 1; j < array.GetLength(1); j++)
+  {
+    sumLine += array[i,j];
+  }
+  return sumLine;
+}
+
+int [,] SumMinElem(int[,] array)
+{
+int minSumLine = 0;
+int sumLine = SumLineElements(array, 0);
+for (int i = 1; i < array.GetLength(0); i++)
+    {
+    int tempSumLine = SumLineElements(array, i);
+    if (sumLine > tempSumLine)
+        {
+        sumLine = tempSumLine;
+        minSumLine = i;
+        }
+    }
+    Console.WriteLine();
+    Console.WriteLine($"Cтрокa с наименьшей суммой - {minSumLine+1} и суммой элеметов = {sumLine}");
+    return array;
+}
+
+int m = GetNumber("Введите количество строк m: ");
+int n = GetNumber("Введите столбцов n: ");
+int [,] array = GetArray(m, n);
+Console.WriteLine("\nПолученный массив: ");
+PrintArray(array);
+int [,]sum = SumMinElem(array);

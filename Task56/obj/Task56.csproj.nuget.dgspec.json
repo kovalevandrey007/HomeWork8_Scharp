@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GIT repozitory from kovalevandrey007 in GitHub.com\\HomeWork8_Scharp\\Task56\\Task56.csproj": {}
+    "/home/Andy-PC/Рабочий стол/HomeWork8_Scharp/Task56/Task56.csproj": {}
   },
   "projects": {
-    "D:\\GIT repozitory from kovalevandrey007 in GitHub.com\\HomeWork8_Scharp\\Task56\\Task56.csproj": {
+    "/home/Andy-PC/Рабочий стол/HomeWork8_Scharp/Task56/Task56.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GIT repozitory from kovalevandrey007 in GitHub.com\\HomeWork8_Scharp\\Task56\\Task56.csproj",
+        "projectUniqueName": "/home/Andy-PC/Рабочий стол/HomeWork8_Scharp/Task56/Task56.csproj",
         "projectName": "Task56",
-        "projectPath": "D:\\GIT repozitory from kovalevandrey007 in GitHub.com\\HomeWork8_Scharp\\Task56\\Task56.csproj",
-        "packagesPath": "C:\\Users\\Andy-PC\\.nuget\\packages\\",
-        "outputPath": "D:\\GIT repozitory from kovalevandrey007 in GitHub.com\\HomeWork8_Scharp\\Task56\\obj\\",
+        "projectPath": "/home/Andy-PC/Рабочий стол/HomeWork8_Scharp/Task56/Task56.csproj",
+        "packagesPath": "/home/Andy-PC/.nuget/packages/",
+        "outputPath": "/home/Andy-PC/Рабочий стол/HomeWork8_Scharp/Task56/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Andy-PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/Andy-PC/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.404/RuntimeIdentifierGraph.json"
         }
       }
     }

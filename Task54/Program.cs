@@ -1,4 +1,4 @@
-﻿/*Задайте двумерный массив. Напишите программу, 
+﻿/*Задача 54. Задайте двумерный массив. Напишите программу, 
 которая упорядочит по убыванию элементы каждой 
 строки двумерного массива.
 Например, задан массив:
@@ -10,85 +10,6 @@
 9 5 3 2
 8 4 4 2*/
 
-
-//Создайте двумерный массив положительных чисел и поменяте строки местами
- 
-//функция получения массива 
-int[,] GetArray(int m, int n, int minValue, int maxValue) 
-{ 
-    int[,] array = new int[m,n]; 
-    Random rnd = new Random(); 
-    for (int i = 0; i < m; i++) 
-    { 
-    for (int j = 0; j < n; j++) 
-        { 
-        array[i,j] = rnd.Next(minValue, maxValue + 1); 
-        } 
-    } 
-return array; 
-} 
-
-//функция получения положительного числа 
-int GetPositiveNumber(string text) 
-{ 
-    int result = 0; 
-    Console.WriteLine(text); 
-    while(true) 
-    { 
-    if (int.TryParse(Console.ReadLine(), out result) && result > 0) 
-        { 
-        break; 
-        } 
-        else 
-        { 
-        Console.WriteLine("Ввели не число или число меньше 1"); 
-        } 
-    } 
-return result; 
-} 
-
-//функция замены строк массива 
-int[,] ArrayStringReplace(int[,] array) 
-{ 
-    int[,] resultArray = new int [array.GetLength(0), array.GetLength(1)]; 
-    for (int i = 0; i < array.GetLength(0); i++) 
-        { 
-        for (int j = 0; j < array.GetLength(1); j++) 
-            { 
-            if (i == 0) 
-                { 
-                resultArray[i,j] = array[array.GetLength(0) - 1, j]; 
-                }
-                else if (i == array.GetLength(0) - 1) 
-                { 
-                resultArray[i, j] = array[0, j]; 
-                } 
-                else 
-                { 
-                resultArray[i, j] = array[i, j]; 
-                } 
-            } 
-        } 
-    return resultArray; 
-} 
-
-
-//функция печати массива 
-void PrintArray(int[,] array) 
-{ 
-    for (int i = 0; i < array.GetLength(0); i++) 
-    { 
-    for (int j = 0; j < array.GetLength(1); j++) 
-        { 
-            Console.Write($"{array[i,j]} "); 
-        } 
-    Console.WriteLine(); 
-    } 
-} 
-
-
-
-//функция получения числа 
 int GetNumber(string text) 
 { 
     int result = 0; 
@@ -97,22 +18,69 @@ int GetNumber(string text)
     { 
     if (int.TryParse(Console.ReadLine(), out result)) 
         { 
-            break; 
+        break; 
         } 
         else 
         { 
-        Console.WriteLine("Ввели не число"); 
+        Console.WriteLine("Ввели не число. Введите число: "); 
         } 
     } 
-    return result; 
+return result; 
 } 
 
-int m = GetPositiveNumber("Введите m"); 
-int n = GetPositiveNumber("Введите n"); 
-int minValue = GetNumber("Введите минимальное значение массива"); 
-int maxValue = GetNumber("Введите максимальное значение массива"); 
-int[,] array = GetArray(m, n, minValue, maxValue); 
-PrintArray(array); 
-int[,] resultArray = ArrayStringReplace(array); 
-Console.WriteLine(); 
-PrintArray(resultArray); 
+int[,] GetArray(int m, int n) 
+{
+  int[,] array = new int[m,n]; 
+  Random rnd = new Random(); 
+  for (int i = 0; i < m; i++) 
+    { 
+    for (int j = 0; j < n; j++) 
+        { 
+        array[i,j] = rnd.Next(0, 10); 
+        } 
+    } 
+return array; 
+} 
+
+
+int [,] SortMin(int[,] array)
+{
+  for (int i = 0; i < array.GetLength(0); i++)
+  {
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+      for (int k = 0; k < array.GetLength(1) - 1; k++)
+      {
+        if (array[i, k] < array[i, k + 1])
+        {
+          int temp = array[i, k + 1];
+          array[i, k + 1] = array[i, k];
+          array[i, k] = temp;
+        }
+      }
+    }
+  }
+return array;
+}
+
+void PrintArray(int[,] array)
+{
+  for (int i = 0; i < array.GetLength(0); i++)
+  {
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+      Console.Write($"{array[i, j]} ");
+    }
+    Console.WriteLine();
+  }
+}
+
+
+int m = GetNumber("Введите число строк m: ");
+int n = GetNumber("Введите число столбцов n: ");
+int[,] array = GetArray(m,n);
+Console.WriteLine($"\nПолучившийся массив: ");
+PrintArray(array);
+Console.WriteLine($"\nОтсортированный массив: ");
+int [,] resultArr = SortMin(array);
+PrintArray(resultArr);

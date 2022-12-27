@@ -6,32 +6,65 @@
 18 20
 15 18*/
 
-/*Задача 57: Составить частотный 
-словарь элементов двумерного массива. Частотный словарь 
-содержит информацию о том, сколько раз встречается элемент входных данных. */
 
-/*{ 1, 9, 9, 0, 2, 8, 0, 9 } 
-
-0 встречается 2 раза 
-1 встречается 1 раз 
-2 встречается 1 раз 
-8 встречается 1 раз 
-9 встречается 3 раза */
-
-int [] array = new int [] {1, 9, 9, 0, 2, 8, 0, 9};
-
-Dictionary<int, int> dic = new Dictionary<int, int>(); //бибилиотека
+int[,] arr1 = {{1, 2, 3},
+               {4, 5, 6},
+               {7, 8, 9}};
 
 
-for (int i = 0; i < array.Length; i++)
+Console.WriteLine("\nПервая матрица: ");
+void PrintArray1(int[,] arr1)
 {
-if(dic.ContainsKey(array[i]))
-dic[array[i]] = dic[array[i]] + 1;
-else
-dic.Add(array[i], 1);
+  for (int i = 0; i < arr1.GetLength(0); i++)
+  {
+    for (int j = 0; j < arr1.GetLength(1); j++)
+    {
+      Console.Write(arr1[i, j] + " ");
+    }
+    Console.WriteLine();
+  }
+}
+PrintArray1(arr1);
+
+int[,] arr2 = {{3, 4, 6},
+               {7, 2, 1},
+               {1, 3, 2}};
+ 
+
+Console.WriteLine("\nВторая матрица: ");
+void PrintArray2(int[,] arr2)
+{
+  for (int i = 0; i < arr2.GetLength(0); i++)
+  {
+    for (int j = 0; j < arr2.GetLength(1); j++)
+    {
+      Console.Write(arr2[i, j] + " ");
+    }
+    Console.WriteLine();
+  }
+}
+PrintArray2(arr2);
+
+int j;
+for (int i = 0; i < 3; i++)
+{
+for (j = 0; j < 3; j++)
+    {
+    arr1[i, j] = arr1[i, j] * arr2[i, j];
+    }
 }
 
-foreach (var item in dic.OrderBy(x=>x.Key))
+Console.WriteLine("\nПроизведение двух матриц: ");
+void PrintArray3(int[,] arr1)
 {
-Console.WriteLine($"{item.Key} встречается {item.Value}");
-} 
+  for (int i = 0; i < arr1.GetLength(0); i++)
+  {
+    for (int j = 0; j < arr1.GetLength(1); j++)
+    {
+      Console.Write($"{arr1[i, j]} ");
+    }
+    Console.WriteLine();
+  }
+}
+PrintArray3(arr1);
+
